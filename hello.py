@@ -1,17 +1,10 @@
 import pyowm
 import telebot
+import constants
 
 
-bot = telebot.TeleBot("407153571:AAF1HGMTb92U4ERzPj2dRfUh5vIeVr8GbUE")
-user_markup = telebot.types.ReplyKeyboardMarkup(True, False)
+bot = telebot.TeleBot(constants.token)
 
-"""
-print ("В городе " + city + "," + " " + "сейчас температура: " + str (temperatura) + " " + "по Цельсию." )
-print (  "Направление и скорость ветра" + " " + str (veter)  )
-print ("Влажность в городе" + " " + city + " " + str (vlash) )
-print ( detalstat + "\n")
-"""
-city_add = 0
 def log(message):
     print("\n-----")
     from datetime import datetime
@@ -38,15 +31,6 @@ def handle_text(message):
 @bot.message_handler(content_types=['text'])
 
 def handle_text(message):
-    """
-    if message.text == "Добавить в избранное":
-        city_add=1
-        bot.send_message(message.from_user.id, "Введите город, который нужно добавить:")
-        user_markup.row(message.text)
-        bot.send_message(message.from_user.id, "added",  reply_markup=user_markup)
-
-    else:
-    """
     try:
                 city = message.text
                 owm = pyowm.OWM('91c713db144e1ce5a94dffd4229169ed')
